@@ -1,0 +1,9 @@
+[
+    {
+      "name": "MyStruct",
+      "fields": [
+        { "name": "field1", "type": "i32" },
+        { "name": "field2", "type": "float" }
+      ]
+    }
+  ]

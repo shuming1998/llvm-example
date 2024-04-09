@@ -1,0 +1,1 @@
+clang++ -g -O3 -I /usr/local/include main.cpp `llvm-config --cxxflags --ldflags --system-libs --libs core orcjit native` -o main

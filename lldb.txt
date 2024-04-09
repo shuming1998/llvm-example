@@ -1,0 +1,20 @@
+1.设置断点:
+在initializeStruct函数开始处设置断点，因为这是你初始化结构体成员的地方。在LLDB中，可以这样设置断点：
+b initializeStruct
+
+2.检查成员赋值:
+当程序在initializeStruct函数的断点处停止时，单步执行每一行代码，检查每个成员赋值是否正确执行。特别是要确认ConstantInt::get和ConstantFP::get是否正确创建了值42和3.14。
+
+3.跟踪成员访问代码:
+设置断点在成员访问代码的位置，例如在你尝试读取成员值的地方。检查使用的指针偏移是否正确。使用p或print命令来打印出指针和偏移量，例如：
+p intMemberPtr
+p floatMemberPtr
+
+
+4.使用LLDB的内存读取命令:
+使用memory read命令（或简写mem read）来直接从内存地址读取数据，看看实际存储在那里的值是什么。比如：
+memory read intMemberPtr
+memory read floatMemberPtr
+
+
+memory read --format f --size 4 0x0000000101019260
