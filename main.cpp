@@ -20,11 +20,6 @@
 using namespace llvm;
 using namespace llvm::orc;
 
-struct MyStruct {
-    int field1;   // 对应 i32
-    float field2; // 对应 float
-};
-
 ExitOnError ExitOnErr;
 
 LLVMContext TheContext;
@@ -140,8 +135,6 @@ int main(int argc, char *argv[]) {
         int* intMemberPtr = reinterpret_cast<int*>(basePtr);
         float* floatMemberPtr = reinterpret_cast<float*>(basePtr + sizeof(int));
 
-        std::cout << "Offset of field1 in MyStruct: " << offsetof(MyStruct, field1) << std::endl;
-        std::cout << "Offset of field2 in MyStruct: " << offsetof(MyStruct, field2) << std::endl;
         std::cout << "intMember is: " << *intMemberPtr << std::endl;
         std::cout << "floatMember is: " << *floatMemberPtr << std::endl;
 
