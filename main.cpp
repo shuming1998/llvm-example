@@ -34,7 +34,7 @@ std::map<std::string, llvm::Type *> typeMap = {
 };
 
 Function *createFunction(Module &M, const std::string &name, StructType *SType) {
-    // 注意：这里假设你想返回一个指向结构体的指针
+    // 返回一个指向结构体的指针
     Type *returnType = PointerType::get(SType, 0);
     FunctionType *FT = FunctionType::get(returnType, false);
     Function *F = Function::Create(FT, Function::ExternalLinkage, name, &M);
@@ -111,7 +111,7 @@ int main(int argc, char *argv[]) {
 
         StructType *structType = StructType::create(TheContext, fieldTypes, structName);
 
-        // 创建一个函数用于初始化结构体
+        // 创建一个函数，用于初始化结构体
         std::string funcName = "init_" + structName;
         Function *F = createFunction(*TheModule, funcName, structType);
         initializeStruct(*TheModule, structType, F);
@@ -131,7 +131,7 @@ int main(int argc, char *argv[]) {
         void *mptr = func(); // 调用初始化函数
 
         char* basePtr = reinterpret_cast<char*>(mptr);
-        // 假设intMember位于结构体的开始位置，floatMember紧随其后
+        // 根据json文件的定义，可以知道 int 成员位于结构体的开始位置，float 成员紧随其后
         int* intMemberPtr = reinterpret_cast<int*>(basePtr);
         float* floatMemberPtr = reinterpret_cast<float*>(basePtr + sizeof(int));
 
