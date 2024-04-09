@@ -9,6 +9,9 @@ sh compile.sh
 运行：
 ./main
 
+structs.json：结构体定义
+main.cpp逻辑：
+
 1.读取 json，创建 IR 结构体
 
 2.创建函数，初始化结构体对象，返回对象指针
